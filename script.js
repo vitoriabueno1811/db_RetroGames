@@ -13,7 +13,7 @@ btnCadastrar.addEventListener("click", () => {
 btnCancelar.addEventListener("click", () => {
     modalCadastro.close();
     formJogo.reset();
-
+})
 //Carregar os Jogos do BD(GET)
 async function carregarJogos(){
     try{
@@ -40,7 +40,7 @@ async function carregarJogos(){
 
 }
 //Cadastrar novo jogo (POST)
-form.addEventListener("submit", async (evento)=> {
+formJogo.addEventListener("submit", async (evento)=> {
     evento.preventDefault()
 
     const novoJogo = {
@@ -62,8 +62,8 @@ form.addEventListener("submit", async (evento)=> {
         })
         if (resposta.ok) {
             
-            form.reset()
-            modal.close()
+            formJogo.reset()
+            modalCadastro.close()
             carregarJogos()
         }else{
             alert("Erro ao salvar jogo. Verifique BD")
@@ -73,9 +73,7 @@ form.addEventListener("submit", async (evento)=> {
         alert("Erro de conexão com o servidor")
     }
 
-})
-
-})
+}) 
 function criarCard(titulo_jogo, plataforma, preco, imagem) {
     mensagemVazia.hidden = true;
     const card = document.createElement("article");
@@ -109,3 +107,4 @@ formJogo.addEventListener("submit", (event) => {
     modalCadastro.close();
     formJogo.reset();
 })
+carregarJogos()
