@@ -31,12 +31,12 @@ async function carregarJogos(){
         mensagemVazia.hidden = true
 
         jogos.forEach(jogo => {
-            criarCard(jogo.titulo_jogo, jogo.plataforma, jogo.preco, jogo.imagem)
-    })
-}catch(erro){
-    console.error("Erro ao carregar jogos", erro)
-    alert("Não foi possível conectar ao servidor")
-}
+            criarCard(titulo = jogo.titulo_jogo, plataforma = jogo.plataforma, preco = jogo.preco, imagem = jogo.imagem)
+        });
+    }catch(erro){
+        console.error("Erro ao carregar jogos", erro)
+        alert("Não foi possível conectar ao servidor")
+    }
 
 }
 //Cadastrar novo jogo (POST)
@@ -96,15 +96,4 @@ function criarCard(titulo_jogo, plataforma, preco, imagem) {
     card.append(capa, info);
     listarJogos.appendChild(card);
 }
-formJogo.addEventListener("submit", (event) => {
-    event.preventDefault(); 
-    const tituloVal = document.getElementById("titulo_jogo").value;
-    const plataformaVal = document.getElementById("plataforma").value;
-    const desenvolvedora= document.getElementById("desenvolvedora").value;
-    const imagemVal = document.getElementById("imagem").value;
-    const precoVal = document.getElementById("preco").value;
-    criarCard(tituloVal, plataformaVal, precoVal, imagemVal);
-    modalCadastro.close();
-    formJogo.reset();
-})
 carregarJogos()

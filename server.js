@@ -20,7 +20,7 @@ db.connect((erro) =>{
 
 //listar todos os Jogos
 const monstrarJogos  = (req, res) => {
-    const sql  = "SELECT titulo_jogo, plataforma, desenvolvedora, imagem_url AS imagem, preco FROM jogos"
+    const sql = "SELECT titulo_jogo, plataforma, desenvolvedora, imagem_url AS imagem, preco FROM jogos"
     db.query(sql,(erro, resultados)=> {
          if(erro){
             return res.status(500).send("Erro ao consulta DB")
