@@ -1,6 +1,6 @@
-DROP SCHEMA IF EXISTS db_retrogames;
-CREATE SCHEMA db_retrogames;
-use db_retrogames;
+DROP DATABASE IF EXISTS db_retrogames;
+CREATE DATABASE db_retrogames;
+USE db_retrogames;
 
 CREATE TABLE jogos(
     id int not null primary key AUTO_INCREMENT,

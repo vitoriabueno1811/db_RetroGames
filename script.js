@@ -39,7 +39,7 @@ formJogo.addEventListener("submit", (event) => {
     event.preventDefault(); 
     const tituloVal = document.getElementById("titulo_jogo").value;
     const plataformaVal = document.getElementById("plataforma").value;
-    const desenvolvedoraVal = document.getElementById("desenvolvedora").value;
+    const desenvolvedora= document.getElementById("desenvolvedora").value;
     const imagemVal = document.getElementById("imagem").value;
     const precoVal = document.getElementById("preco").value;
     criarCard(tituloVal, plataformaVal, precoVal, imagemVal);
