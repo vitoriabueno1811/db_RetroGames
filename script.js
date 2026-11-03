@@ -1,3 +1,4 @@
+const API_URL = "http://localhost:3000"
 
 const modalCadastro = document.getElementById("modalCadastro");
 const btnCadastrar = document.getElementById("btnCadastrar");
@@ -19,11 +20,11 @@ async function carregarJogos(){
         const resposta = await fetch(API_URL + '/listar')
         const jogos = await resposta.json()
 
-        lista.innerHTML =""
+        listarJogos.innerHTML =""
 
         if(jogos.length == 0){
             mensagemVazia.hidden = false 
-            listar.appendChild(mensagemVazia)
+            listarJogos.appendChild(mensagemVazia)
             return
         }
 
@@ -108,5 +109,3 @@ formJogo.addEventListener("submit", (event) => {
     modalCadastro.close();
     formJogo.reset();
 })
-
-carregarJogos()
