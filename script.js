@@ -28,7 +28,7 @@ async function carregarJogos(){
         }
 
         mensagemVazia.hidden = true
-        //Renderize os jogos encontrados
+
         jogos.forEach(jogo => {
             criarCard(jogo.titulo_jogo, jogo.plataforma, jogo.preco, jogo.imagem)
     })
@@ -74,7 +74,6 @@ form.addEventListener("submit", async (evento)=> {
 
 })
 
-
 })
 function criarCard(titulo_jogo, plataforma, preco, imagem) {
     mensagemVazia.hidden = true;
@@ -108,4 +107,6 @@ formJogo.addEventListener("submit", (event) => {
     criarCard(tituloVal, plataformaVal, precoVal, imagemVal);
     modalCadastro.close();
     formJogo.reset();
-});
+})
+
+carregarJogos()
