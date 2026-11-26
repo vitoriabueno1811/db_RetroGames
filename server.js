@@ -36,7 +36,7 @@ const novoJogo = (req, res) =>{
         const sql = "INSERT INTO jogos (titulo_jogo, plataforma, desenvolvedora, imagem_url, preco) VALUES (?, ?, ?, ?, ?)"
         const valores = [titulo_jogo, plataforma, desenvolvedora, imagem_url, preco]
 
-        db.query(sql, valores,(erro, resultado)=>{
+        db.query(sql, valores,(erro, resultados)=>{
             if(erro){
                 return res.status(500).send("Erro ao inserir jogo")
             }
@@ -46,6 +46,39 @@ const novoJogo = (req, res) =>{
         res.status(400).send("Erro: Preencha todos os campos")
     }
 }
+
+//Alterar Jogo
+const atualizarJogo = (req, res)=>{
+    const { id } = req.params
+    const{titulo_jogo, plataforma, desenvolvedora, imagem_url, preco} = req.body
+
+    if(titulo_jogo && plataforma && desenvolvedora && imagem_url && preco){
+        const sql= "UPDATE jogos SET titulo_jogo = ?, plataforma = ?, desenvolvedora = ?, imagem_url = ?, preco = ? WHERE id = ?"
+        const valores = [titulo_jogo,plataforma, desenvolvedora, imagem_url, preco, id]
+
+        db.query(sql, valores,(erro, resultados)=>{
+            if(erro){
+                return res.status(500).send("Erro ao atualizar jogo")
+            }
+            res.send("jogo atualizado com sucesso")
+        })
+        }else{
+            res.status(400).send("Erro: Preencha todos os campos")
+        }
+}
+
+const deletarJogos = (req, res)=>{
+    const { id } = req.params
+    const sql = "DELETE FROM jogos WHERE id = ?"
+
+    db.query(sql,[id],(erro, resultados)=>{
+        if(erro){
+            return res.status(500).send("Erro ao deletar jogo")
+        }
+        res.send("jogo deletado com sucesso")
+    })
+}
+
 //Middlewares
 
 const app = express()
@@ -59,6 +92,8 @@ const porta = 3000
 //rotas
 app.use("/listar", monstrarJogos)
 app.post("/cadastrar", novoJogo)
+app.put("/atualizar/:id", atualizarJogo)
+app.delete("/excluir/:id",deletarJogos)
 
 app.listen(porta,()=>{
     console.log(`Servidor rodando (alegria) porta${porta}`)
