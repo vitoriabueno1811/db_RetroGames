@@ -164,3 +164,10 @@ button.cancelar:hover{
     object-fit: cover;
     display: block;
 }
+
+button.btn-editar{
+    background: cyan;
+}
+button.btn-excluir{
+    background: darkblue;
+}
